@@ -61,17 +61,71 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
       >
         {/* Back button */}
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#ffffff" />
+          <Ionicons name="arrow-back" size={24} color="#2B2B2B" />
           <Text style={styles.backText}>Voltar</Text>
         </TouchableOpacity>
 
-        {/* Background NFC Card */}
-        <View style={styles.backgroundCard}>
+        {/* Mini Cards Decorativos - com efeito de profundidade */}
+        <View style={styles.miniCard1}>
           <LinearGradient
-            colors={['#4a5568', '#9ca3af']}
-            style={styles.backgroundCardGradient}
+            colors={gradients.accent}
+            style={styles.miniCardGradient}
           >
-            <Ionicons name="wifi" size={40} color="rgba(255, 255, 255, 0.8)" style={styles.backgroundIcon} />
+            <Ionicons name="wifi" size={16} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard2}>
+          <LinearGradient
+            colors={gradients.primary}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="card-outline" size={16} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard3}>
+          <LinearGradient
+            colors={gradients.cardDark}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="flash" size={16} color="#FF7A00" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard4}>
+          <LinearGradient
+            colors={gradients.accent}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="swap-horizontal" size={16} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard5}>
+          <LinearGradient
+            colors={gradients.primary}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="finger-print" size={14} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard6}>
+          <LinearGradient
+            colors={gradients.cardDark}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="shield-checkmark" size={14} color="#FF7A00" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard7}>
+          <LinearGradient
+            colors={gradients.accent}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="wallet" size={12} color="#FFFFFF" />
           </LinearGradient>
         </View>
 
@@ -91,7 +145,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
                 placeholder="Username"
                 value={username}
                 onChangeText={setUsername}
-                leftIcon={<Ionicons name="person-outline" size={20} color="#9ca3af" />}
+                leftIcon={<Ionicons name="person-outline" size={20} color="#6E6E6E" />}
                 style={styles.input}
               />
             </View>
@@ -104,13 +158,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={!showPassword}
-                leftIcon={<Ionicons name="key-outline" size={20} color="#9ca3af" />}
+                leftIcon={<Ionicons name="key-outline" size={20} color="#6E6E6E" />}
                 rightIcon={
                   <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                     <Ionicons
                       name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                       size={20}
-                      color="#9ca3af"
+                      color="#6E6E6E"
                     />
                   </TouchableOpacity>
                 }
@@ -142,13 +196,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
                 style={styles.socialButton}
                 onPress={() => Alert.alert('Google Login', 'Funcionalidade será implementada')}
               >
-                <Ionicons name="logo-google" size={24} color="#4285F4" />
+                <Ionicons name="logo-google" size={24} color="#FF7A00" />
               </TouchableOpacity>
               <TouchableOpacity 
                 style={styles.socialButton}
                 onPress={() => Alert.alert('Apple Login', 'Funcionalidade será implementada')}
               >
-                <Ionicons name="logo-apple" size={24} color="#ffffff" />
+                <Ionicons name="logo-apple" size={24} color="#004F64" />
               </TouchableOpacity>
             </View>
           </View>
@@ -186,27 +240,131 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   backText: {
-    color: '#ffffff',
+    color: '#2B2B2B',
     fontSize: 18,
     marginLeft: 8,
   },
-  backgroundCard: {
+  // Camada 1: Cards mais próximos (bem visíveis)
+  miniCard1: {
     position: 'absolute',
-    top: 48,
-    right: 48,
-    width: 288,
-    height: 420,
-    borderRadius: 24,
+    top: 80,
+    right: 40,
+    width: 70,
+    height: 90,
+    borderRadius: 14,
     transform: [{ rotate: '12deg' }],
-    zIndex: 0,
-    opacity: 0.3,
+    zIndex: 1,
+    opacity: 0.85,
+    shadowColor: '#004F64',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.35,
+    shadowRadius: 20,
+    elevation: 8,
   },
-  backgroundCardGradient: {
+  miniCard2: {
+    position: 'absolute',
+    top: 200,
+    left: 30,
+    width: 75,
+    height: 95,
+    borderRadius: 14,
+    transform: [{ rotate: '-8deg' }],
+    zIndex: 1,
+    opacity: 0.9,
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 14 },
+    shadowOpacity: 0.4,
+    shadowRadius: 22,
+    elevation: 9,
+  },
+  // Camada 2: Cards em profundidade média
+  miniCard3: {
+    position: 'absolute',
+    bottom: 320,
+    right: 20,
+    width: 55,
+    height: 75,
+    borderRadius: 12,
+    transform: [{ rotate: '15deg' }],
+    zIndex: -1,
+    opacity: 0.45,
+    shadowColor: '#2B2B2B',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
+    elevation: 4,
+  },
+  miniCard4: {
+    position: 'absolute',
+    bottom: 200,
+    left: 50,
+    width: 60,
+    height: 80,
+    borderRadius: 12,
+    transform: [{ rotate: '-12deg' }],
+    zIndex: -1,
+    opacity: 0.5,
+    shadowColor: '#004F64',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.22,
+    shadowRadius: 16,
+    elevation: 4,
+  },
+  miniCard5: {
+    position: 'absolute',
+    top: 350,
+    right: 60,
+    width: 50,
+    height: 70,
+    borderRadius: 11,
+    transform: [{ rotate: '20deg' }],
+    zIndex: -1,
+    opacity: 0.42,
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 7 },
+    shadowOpacity: 0.18,
+    shadowRadius: 14,
+    elevation: 3,
+  },
+  // Camada 3: Cards bem ao fundo (desfocados)
+  miniCard6: {
+    position: 'absolute',
+    bottom: 400,
+    left: 25,
+    width: 45,
+    height: 65,
+    borderRadius: 10,
+    transform: [{ rotate: '-18deg' }],
+    zIndex: -2,
+    opacity: 0.15,
+    shadowColor: '#2B2B2B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 1,
+  },
+  miniCard7: {
+    position: 'absolute',
+    top: 150,
+    left: 15,
+    width: 42,
+    height: 62,
+    borderRadius: 9,
+    transform: [{ rotate: '-5deg' }],
+    zIndex: -2,
+    opacity: 0.12,
+    shadowColor: '#004F64',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 20,
+    elevation: 1,
+  },
+  miniCardGradient: {
     flex: 1,
-    borderRadius: 24,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    padding: 24,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
   },
   backgroundIcon: {
     marginTop: 24,
@@ -220,13 +378,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
     marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 18,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     textAlign: 'center',
   },
   form: {
@@ -239,7 +397,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 8,
     fontWeight: '500',
   },
@@ -251,7 +409,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   forgotPasswordText: {
-    color: '#9ca3af',
+    color: '#6E6E6E',
     fontSize: 14,
   },
   signInButton: {
@@ -271,7 +429,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#404040',
   },
   dividerText: {
-    color: '#9ca3af',
+    color: '#6E6E6E',
     fontSize: 14,
     paddingHorizontal: 16,
   },

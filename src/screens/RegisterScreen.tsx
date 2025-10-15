@@ -73,17 +73,80 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
       >
         {/* Back button */}
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
-          <Ionicons name="arrow-back" size={24} color="#ffffff" />
+          <Ionicons name="arrow-back" size={24} color="#2B2B2B" />
           <Text style={styles.backText}>Voltar</Text>
         </TouchableOpacity>
 
-        {/* Background NFC Card */}
-        <View style={styles.backgroundCard}>
+        {/* Mini Cards Decorativos */}
+        <View style={styles.miniCard1}>
           <LinearGradient
-            colors={['#4a5568', '#9ca3af']}
-            style={styles.backgroundCardGradient}
+            colors={gradients.primary}
+            style={styles.miniCardGradient}
           >
-            <Ionicons name="wifi" size={48} color="rgba(255, 255, 255, 0.8)" style={styles.backgroundIcon} />
+            <Ionicons name="card" size={18} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard2}>
+          <LinearGradient
+            colors={gradients.accent}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="finger-print" size={18} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard3}>
+          <LinearGradient
+            colors={gradients.cardDark}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="shield-checkmark" size={18} color="#FF7A00" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard4}>
+          <LinearGradient
+            colors={gradients.primary}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="wallet" size={16} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard5}>
+          <LinearGradient
+            colors={gradients.accent}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="sync" size={16} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard6}>
+          <LinearGradient
+            colors={gradients.cardDark}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="lock-closed" size={14} color="#FF7A00" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard7}>
+          <LinearGradient
+            colors={gradients.primary}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="qr-code" size={14} color="#FFFFFF" />
+          </LinearGradient>
+        </View>
+        
+        <View style={styles.miniCard8}>
+          <LinearGradient
+            colors={gradients.accent}
+            style={styles.miniCardGradient}
+          >
+            <Ionicons name="analytics" size={12} color="#FFFFFF" />
           </LinearGradient>
         </View>
 
@@ -105,7 +168,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
                 onChangeText={(text) => setFormData({ ...formData, email: text })}
                 keyboardType="email-address"
                 autoCapitalize="none"
-                leftIcon={<Ionicons name="mail-outline" size={20} color="#9ca3af" />}
+                leftIcon={<Ionicons name="mail-outline" size={20} color="#6E6E6E" />}
                 style={styles.input}
               />
             </View>
@@ -118,7 +181,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
                 value={formData.name}
                 onChangeText={(text) => setFormData({ ...formData, name: text })}
                 autoCapitalize="none"
-                leftIcon={<Ionicons name="person-outline" size={20} color="#9ca3af" />}
+                leftIcon={<Ionicons name="person-outline" size={20} color="#6E6E6E" />}
                 style={styles.input}
               />
             </View>
@@ -131,13 +194,13 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
                 value={formData.password}
                 onChangeText={(text) => setFormData({ ...formData, password: text })}
                 secureTextEntry={!showPassword}
-                leftIcon={<Ionicons name="key-outline" size={20} color="#9ca3af" />}
+                leftIcon={<Ionicons name="key-outline" size={20} color="#6E6E6E" />}
                 rightIcon={
                   <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                     <Ionicons
                       name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                       size={20}
-                      color="#9ca3af"
+                      color="#6E6E6E"
                     />
                   </TouchableOpacity>
                 }
@@ -171,13 +234,13 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
                 style={styles.socialButton}
                 onPress={() => Alert.alert('Google Sign Up', 'Funcionalidade será implementada')}
               >
-                <Ionicons name="logo-google" size={24} color="#4285F4" />
+                <Ionicons name="logo-google" size={24} color="#FF7A00" />
               </TouchableOpacity>
               <TouchableOpacity 
                 style={styles.socialButton}
                 onPress={() => Alert.alert('Apple Sign Up', 'Funcionalidade será implementada')}
               >
-                <Ionicons name="logo-apple" size={24} color="#ffffff" />
+                <Ionicons name="logo-apple" size={24} color="#004F64" />
               </TouchableOpacity>
             </View>
           </View>
@@ -215,27 +278,147 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   backText: {
-    color: '#ffffff',
+    color: '#2B2B2B',
     fontSize: 18,
     marginLeft: 8,
   },
-  backgroundCard: {
+  // Camada 1: Cards mais próximos (bem visíveis)
+  miniCard1: {
     position: 'absolute',
-    top: 32,
-    right: 32,
-    width: 320,
-    height: 460,
-    borderRadius: 24,
-    transform: [{ rotate: '12deg' }],
-    zIndex: 0,
-    opacity: 0.3,
+    top: 100,
+    right: 30,
+    width: 75,
+    height: 95,
+    borderRadius: 14,
+    transform: [{ rotate: '15deg' }],
+    zIndex: 1,
+    opacity: 0.88,
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 14 },
+    shadowOpacity: 0.4,
+    shadowRadius: 22,
+    elevation: 9,
   },
-  backgroundCardGradient: {
+  miniCard2: {
+    position: 'absolute',
+    top: 250,
+    left: 20,
+    width: 68,
+    height: 88,
+    borderRadius: 14,
+    transform: [{ rotate: '-10deg' }],
+    zIndex: 1,
+    opacity: 0.82,
+    shadowColor: '#004F64',
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.35,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+  // Camada 2: Cards em profundidade média
+  miniCard3: {
+    position: 'absolute',
+    top: 420,
+    right: 40,
+    width: 58,
+    height: 78,
+    borderRadius: 12,
+    transform: [{ rotate: '8deg' }],
+    zIndex: -1,
+    opacity: 0.48,
+    shadowColor: '#2B2B2B',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.22,
+    shadowRadius: 16,
+    elevation: 4,
+  },
+  miniCard4: {
+    position: 'absolute',
+    bottom: 220,
+    left: 35,
+    width: 55,
+    height: 75,
+    borderRadius: 12,
+    transform: [{ rotate: '-14deg' }],
+    zIndex: -1,
+    opacity: 0.52,
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 9 },
+    shadowOpacity: 0.25,
+    shadowRadius: 18,
+    elevation: 5,
+  },
+  miniCard5: {
+    position: 'absolute',
+    bottom: 100,
+    right: 25,
+    width: 62,
+    height: 82,
+    borderRadius: 12,
+    transform: [{ rotate: '12deg' }],
+    zIndex: -1,
+    opacity: 0.46,
+    shadowColor: '#004F64',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
+    elevation: 4,
+  },
+  // Camada 3: Cards bem ao fundo (desfocados)
+  miniCard6: {
+    position: 'absolute',
+    top: 180,
+    left: 15,
+    width: 48,
+    height: 68,
+    borderRadius: 10,
+    transform: [{ rotate: '-8deg' }],
+    zIndex: -2,
+    opacity: 0.16,
+    shadowColor: '#2B2B2B',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 1,
+  },
+  miniCard7: {
+    position: 'absolute',
+    bottom: 350,
+    right: 50,
+    width: 45,
+    height: 65,
+    borderRadius: 10,
+    transform: [{ rotate: '18deg' }],
+    zIndex: -2,
+    opacity: 0.14,
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 20,
+    elevation: 1,
+  },
+  miniCard8: {
+    position: 'absolute',
+    top: 500,
+    left: 45,
+    width: 40,
+    height: 60,
+    borderRadius: 8,
+    transform: [{ rotate: '-12deg' }],
+    zIndex: -2,
+    opacity: 0.12,
+    shadowColor: '#004F64',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.06,
+    shadowRadius: 20,
+    elevation: 1,
+  },
+  miniCardGradient: {
     flex: 1,
-    borderRadius: 24,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    padding: 24,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
   },
   backgroundIcon: {
     marginTop: 24,
@@ -249,13 +432,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
     marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 18,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     textAlign: 'center',
   },
   form: {
@@ -268,7 +451,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 8,
     fontWeight: '500',
   },
@@ -297,7 +480,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#404040',
   },
   dividerText: {
-    color: '#9ca3af',
+    color: '#6E6E6E',
     fontSize: 14,
     paddingHorizontal: 16,
   },
