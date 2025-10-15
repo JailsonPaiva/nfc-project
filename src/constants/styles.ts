@@ -248,3 +248,4 @@ export const createGradientStyle = (gradientType: keyof typeof gradients) => {
     end: { x: 1, y: 1 },
   };
 };
+

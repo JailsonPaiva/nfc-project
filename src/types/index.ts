@@ -5,6 +5,8 @@ export type RootStackParamList = {
   Dashboard: undefined;
   Feed: undefined;
   Menu: undefined;
+  Notifications: undefined;
+  Profile: undefined;
 };
 
 export interface UserCredentials {

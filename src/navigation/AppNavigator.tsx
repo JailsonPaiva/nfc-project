@@ -10,6 +10,8 @@ import { RegisterScreen } from '../screens/RegisterScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { FeedScreen } from '../screens/FeedScreen';
 import { MenuScreen } from '../screens/MenuScreen';
+import { NotificationsScreen } from '../screens/NotificationsScreen';
+import { ProfileScreen } from '../screens/ProfileScreen';
 import { RootStackParamList, UserCredentials, UserRegistration } from '../types';
 import { Alert } from 'react-native';
 import { colors, gradients } from '../constants/colors';
@@ -93,34 +95,34 @@ const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate })
         </LinearGradient>
 
         <TouchableOpacity
-          onPress={() => onNavigate('Feed')}
+          onPress={() => onNavigate('Notifications')}
           style={styles.navButton}
         >
           <Ionicons 
             name="chatbubble" 
             size={20} 
-            color={activeScreen === 'Feed' ? '#FF7A00' : '#A0A0A0'} 
+            color={activeScreen === 'Notifications' ? '#FF7A00' : '#A0A0A0'}
           />
           <Text style={[
             styles.navButtonText,
-            activeScreen === 'Feed' && styles.navButtonTextActive
+            activeScreen === 'Notifications' && styles.navButtonTextActive
           ]}>
-            Message
+            Notificações
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => onNavigate('Feed')}
+          onPress={() => onNavigate('Profile')}
           style={styles.navButton}
         >
           <Ionicons 
             name="person" 
             size={20} 
-            color={activeScreen === 'Feed' ? '#FF7A00' : '#A0A0A0'} 
+            color={activeScreen === 'Profile' ? '#FF7A00' : '#A0A0A0'}
           />
           <Text style={[
             styles.navButtonText,
-            activeScreen === 'Feed' && styles.navButtonTextActive
+            activeScreen === 'Profile' && styles.navButtonTextActive
           ]}>
             Profile
           </Text>
@@ -229,6 +231,18 @@ export const AppNavigator: React.FC = () => {
           <Stack.Screen name="Menu">
             {({ navigation }) => (
               <MenuScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="Notifications">
+            {({ navigation }) => (
+              <NotificationsScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="Profile">
+            {({ navigation }) => (
+              <ProfileScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
             )}
           </Stack.Screen>
         </Stack.Navigator>

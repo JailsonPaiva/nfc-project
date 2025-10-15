@@ -123,3 +123,4 @@ Para personalizar cores, edite as variáveis CSS no início de `styles.css`:
 
 **PassaTap** - Um tap e tá pago. 💳✨
 
+
