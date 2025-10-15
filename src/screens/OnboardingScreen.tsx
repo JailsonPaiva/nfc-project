@@ -139,7 +139,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
       <View style={styles.mainContainer}>
         {/* NFC Cards Visual */}
         <View style={styles.cardsContainer}>
-          {/* Background Card */}
+          {/* Background Card - Azul Petróleo */}
           <Animated.View
             style={[
               styles.card,
@@ -147,12 +147,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
               { transform: backgroundCardTransform },
             ]}
           >
-            <View style={styles.cardGradient}>
-              <Ionicons name="wifi" size={32} color="#60a5fa" style={styles.cardIcon} />
-            </View>
+            <LinearGradient
+              colors={gradients.accent}
+              style={styles.cardGradient}
+            >
+              <Ionicons name="wifi" size={32} color="#FFFFFF" style={styles.cardIcon} />
+            </LinearGradient>
           </Animated.View>
           
-          {/* Middle Card */}
+          {/* Middle Card - Cinza Escuro */}
           <Animated.View
             style={[
               styles.card,
@@ -160,12 +163,15 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
               { transform: middleCardTransform },
             ]}
           >
-            <View style={styles.cardGradient}>
-              <Ionicons name="wifi" size={32} color="#60a5fa" style={styles.cardIcon} />
-            </View>
+            <LinearGradient
+              colors={gradients.cardDark}
+              style={styles.cardGradient}
+            >
+              <Ionicons name="wifi" size={32} color="#FF7A00" style={styles.cardIcon} />
+            </LinearGradient>
           </Animated.View>
           
-          {/* Front Card */}
+          {/* Front Card - Laranja */}
           <Animated.View
             style={[
               styles.card,
@@ -174,12 +180,12 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             ]}
           >
             <LinearGradient
-              colors={['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.05)']}
+              colors={gradients.primary}
               style={styles.frontCardGradient}
             >
-              <Ionicons name="wifi" size={32} color="#60a5fa" style={styles.cardIcon} />
+              <Ionicons name="wifi" size={32} color="#FFFFFF" style={styles.cardIcon} />
               <LinearGradient
-                colors={['rgba(96, 165, 250, 0.05)', 'transparent']}
+                colors={['rgba(255, 255, 255, 0.1)', 'transparent']}
                 style={styles.overlayGradient}
               />
             </LinearGradient>
@@ -248,16 +254,29 @@ const styles = StyleSheet.create({
     left: 32,
     top: 32,
     zIndex: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 5,
   },
   middleCard: {
     left: 48,
     top: 16,
     zIndex: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    elevation: 7,
   },
   frontCard: {
     zIndex: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 10,
   },
   cardGradient: {
     flex: 1,
@@ -265,7 +284,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     padding: 24,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
   },
   frontCardGradient: {
     flex: 1,
@@ -294,10 +312,11 @@ const styles = StyleSheet.create({
     marginLeft: -96,
     width: 192,
     height: 96,
-    borderWidth: 2,
+    borderWidth: 3,
     borderStyle: 'dashed',
-    borderColor: 'rgba(156, 163, 175, 0.3)',
+    borderColor: '#FF7A00',
     borderRadius: 96,
+    opacity: 0.5,
   },
   content: {
     alignItems: 'center',
@@ -307,7 +326,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
     textAlign: 'center',
     lineHeight: 44,
     marginBottom: 32,
