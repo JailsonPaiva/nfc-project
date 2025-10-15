@@ -9,6 +9,7 @@ import { LoginScreen } from '../screens/LoginScreen';
 import { RegisterScreen } from '../screens/RegisterScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { FeedScreen } from '../screens/FeedScreen';
+import { MenuScreen } from '../screens/MenuScreen';
 import { RootStackParamList, UserCredentials, UserRegistration } from '../types';
 import { Alert } from 'react-native';
 import { colors, gradients } from '../constants/colors';
@@ -222,6 +223,12 @@ export const AppNavigator: React.FC = () => {
           <Stack.Screen name="Feed">
             {({ navigation }) => (
               <FeedScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="Menu">
+            {({ navigation }) => (
+              <MenuScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
             )}
           </Stack.Screen>
         </Stack.Navigator>

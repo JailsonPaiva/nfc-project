@@ -87,7 +87,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
 
   return (
     <LinearGradient
-      colors={gradients.background}
+      colors={gradients.background as [string, string]}
       style={styles.container}
     >
       {/* Header */}
@@ -121,8 +121,11 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
             }
           ]}>
             <LinearGradient
-              colors={gradients.card}
-              style={styles.cardGradient}
+              colors={gradients.card as [string, string]}
+              style={[
+                styles.cardGradient,
+                { alignItems: isCardFlipped ? 'center' : 'stretch' }
+              ]}
             >
                 {/* Flip Button */}
                 <TouchableOpacity
@@ -175,9 +178,9 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
                       </View>
                     </View>
 
-                    <TouchableOpacity style={styles.detailButton}>
+                    {/* <TouchableOpacity style={styles.detailButton}>
                       <Text style={styles.detailButtonText}>Detail →</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                   </View>
                 </View>
               </LinearGradient>
@@ -193,8 +196,11 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               }
             ]}>
             <LinearGradient
-              colors={gradients.card}
-              style={styles.cardGradient}
+              colors={gradients.card as [string, string]}
+              style={[
+                styles.cardGradient,
+                { alignItems: isCardFlipped ? 'stretch' : 'center' }
+              ]}
             >
                 {/* Flip Back Button */}
                 <TouchableOpacity
@@ -213,14 +219,14 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
                 {/* QR Code */}
                 <View style={styles.qrContainer}>
                   <View style={styles.qrCode}>
-                    <Ionicons name="qr-code" size={140} color="#000000" />
+                    <Ionicons name="qr-code" size={80} color="#000000" />
                   </View>
                 </View>
 
-                <View style={styles.qrInfo}>
+                {/* <View style={styles.qrInfo}>
                   <Text style={styles.qrLabel}>Scan to Pay</Text>
                   <Text style={styles.qrNumber}>616 9477 111</Text>
-                </View>
+                </View> */}
 
                 {/* Card Details */}
                 <View style={styles.cardDetails}>
@@ -236,6 +242,33 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               </LinearGradient>
             </Animated.View>
         </View>
+      </View>
+
+      {/* Quick Actions */}
+      <View style={styles.quickActions}>
+        <TouchableOpacity 
+          style={styles.quickActionButton}
+          onPress={() => onNavigate?.('Menu')}
+          activeOpacity={0.8}
+        >
+          <LinearGradient
+            colors={gradients.primary as [string, string]}
+            style={styles.quickActionGradient}
+          >
+            <Ionicons name="restaurant" size={24} color="#FFFFFF" />
+            <Text style={styles.quickActionText}>Cardápio Digital</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+        
+        <TouchableOpacity 
+          style={styles.quickActionButton}
+          activeOpacity={0.8}
+        >
+          <View style={styles.quickActionSecondary}>
+            <Ionicons name="scan" size={24} color="#FF7A00" />
+            <Text style={styles.quickActionTextSecondary}>Pagar NFC</Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
       {/* Transactions Section */}
@@ -419,7 +452,7 @@ const styles = StyleSheet.create({
   balanceRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 4,
   },
   balanceAmount: {
     fontSize: 28,
@@ -443,10 +476,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+    maxHeight: 200,
+    width: 200,
   },
   qrCode: {
-    width: 180,
-    height: 180,
+    maxWidth: 140,
+    height: 140,
     backgroundColor: '#ffffff',
     borderRadius: 16,
     justifyContent: 'center',
@@ -586,5 +621,51 @@ const styles = StyleSheet.create({
   },
   transactionAmountPositive: {
     color: '#FF7A00',
+  },
+  quickActions: {
+    flexDirection: 'row',
+    paddingHorizontal: 24,
+    marginBottom: 24,
+    gap: 12,
+  },
+  quickActionButton: {
+    flex: 1,
+    height: 80,
+    borderRadius: 16,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  quickActionGradient: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    gap: 8,
+  },
+  quickActionSecondary: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 122, 0, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 122, 0, 0.3)',
+    paddingHorizontal: 16,
+    gap: 8,
+  },
+  quickActionText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  quickActionTextSecondary: {
+    color: '#FF7A00',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
