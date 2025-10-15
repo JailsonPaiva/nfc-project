@@ -1,82 +1,106 @@
-// Design System Colors - Converted from HSL to RGB/HEX for React Native
-// Based on the original CSS design system
+// Design System Colors - PassaTap (versão elegante e clara)
+// Paleta sofisticada com toque brasileiro
 
 export const colors = {
-  // Base colors
-  background: '#212121', // hsl(0 0% 13%)
-  foreground: '#fafafa', // hsl(0 0% 98%)
+  // Cor Principal - Laranja Vibrante
+  primary: '#FF7A00', // Energia, inovação e foco
+  primaryForeground: '#FFFFFF', // Branco para contraste
+  primaryLight: '#FF9433', // Variação mais clara
+  primaryDark: '#CC6200', // Variação mais escura
+  
+  // Background Principal - Off-white Quente
+  background: '#FDFBF9', // Fundo suave, levemente quente, elegante e limpo
+  foreground: '#2B2B2B', // Cinza escuro profundo para textos
+  
+  // Background Secundário - Cinza Neutro Claro
+  backgroundSecondary: '#F4F4F4', // Camadas e profundidade sem pesar
+  
+  // Texto Principal - Cinza Escuro Profundo
+  textPrimary: '#2B2B2B', // Refinado e confortável para leitura
+  
+  // Texto Secundário - Cinza Médio
+  textSecondary: '#6E6E6E', // Legendas, ícones ou informações secundárias
+  
+  // Cor de Apoio Fria - Azul Petróleo
+  accent: '#004F64', // Contraponto elegante ao laranja
+  accentForeground: '#FFFFFF',
+  accentLight: '#006B8A', // Variação mais clara
+  
+  // Cor Destaque Suave - Azul Claro Acinzentado
+  highlight: '#DCE9EE', // Fundo de contraste elegante
+  highlightForeground: '#2B2B2B',
+  
+  // Cor Extra de Equilíbrio - Bege Neutro
+  neutral: '#EAE3DD', // Sofisticação e naturalidade
+  neutralForeground: '#2B2B2B',
   
   // Card colors
-  card: '#2e2e2e', // hsl(0 0% 18%)
-  cardForeground: '#fafafa', // hsl(0 0% 98%)
+  card: '#FFFFFF', // Branco para cards sobre off-white
+  cardForeground: '#2B2B2B',
+  cardSecondary: '#F4F4F4', // Cards secundários
   
   // Popover colors
-  popover: '#2e2e2e', // hsl(0 0% 18%)
-  popoverForeground: '#fafafa', // hsl(0 0% 98%)
-  
-  // Primary colors
-  primary: '#63c4c0', // Verde-água
-  primaryForeground: '#1a1a1a', // Preto para contraste
-  
-  // Gradient colors
-  gradientStart: '#474747', // Nova cor principal
-  gradientEnd: '#2e2e2e', // Cor mais escura
-  
-  // Secondary colors
-  secondary: '#3a3a3a', // hsl(0 0% 23%)
-  secondaryForeground: '#fafafa', // hsl(0 0% 98%)
+  popover: '#FFFFFF',
+  popoverForeground: '#2B2B2B',
   
   // Muted colors
-  muted: '#474747', // hsl(0 0% 28%)
-  mutedForeground: '#a6a6a6', // hsl(0 0% 65%)
-  
-  // Accent colors
-  accent: '#63c4c0', // Verde-água
-  accentForeground: '#1a1a1a', // Preto para contraste
+  muted: '#F4F4F4', // Background secundário
+  mutedForeground: '#6E6E6E', // Texto secundário
   
   // Destructive colors
-  destructive: '#ef4444', // hsl(0 84.2% 60.2%)
-  destructiveForeground: '#fafafa', // hsl(0 0% 98%)
+  destructive: '#E63946', // Vermelho elegante
+  destructiveForeground: '#FFFFFF',
   
   // Border and input colors
-  border: '#474747', // hsl(0 0% 28%)
-  input: '#3a3a3a', // hsl(0 0% 23%)
-  ring: '#63c4c0', // Verde-água
+  border: '#E0E0E0',
+  borderOrange: '#FF7A00', // Borda laranja fina
+  input: '#F4F4F4',
+  ring: '#FF7A00', // Laranja vibrante para focus
   
   // Glass effect colors
-  glassBg: 'rgba(255, 255, 255, 0.05)',
-  glassBorder: 'rgba(255, 255, 255, 0.1)',
+  glassBg: 'rgba(255, 255, 255, 0.95)',
+  glassBorder: 'rgba(255, 122, 0, 0.3)',
   
-  // Additional colors for better contrast
-  white: '#ffffff',
+  // Additional colors
+  white: '#FFFFFF',
   black: '#000000',
   transparent: 'transparent',
 };
 
 // Gradient definitions
 export const gradients = {
-  primary: ['#63c4c0', '#4fa8a5'], // Verde-água claro para escuro
-  secondary: ['#63c4c0', '#3a9d99'], // Variação verde-água
-  card: ['#404040', '#2e2e2e'], // hsl(0 0% 25%) to hsl(0 0% 18%)
-  text: ['#63c4c0', '#4fa8a5'], // Mesmo do primary
-  background: ['#212121', '#212121'], // Cinza sólido
+  primary: ['#FF7A00', '#FF9433'], // Laranja vibrante para laranja claro
+  secondary: ['#FF9433', '#FFAA66'], // Laranja claro para mais claro
+  accent: ['#004F64', '#006B8A'], // Azul petróleo para azul petróleo claro
+  card: ['#FFFFFF', '#F4F4F4'], // Branco para cinza neutro claro (cards elegantes)
+  cardDark: ['#2B2B2B', '#1E1E1E'], // Cards escuros quando necessário
+  text: ['#FF7A00', '#FF9433'], // Laranja para textos com gradiente
+  background: ['#FDFBF9', '#FDFBF9'], // Off-white quente sólido
+  neutral: ['#EAE3DD', '#F4F4F4'], // Bege neutro para cinza claro
 };
 
 // Shadow definitions
 export const shadows = {
   glow: {
-    shadowColor: '#63c4c0',
+    shadowColor: '#FF7A00', // Laranja vibrante
     shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.35,
     shadowRadius: 16,
     elevation: 8,
   },
   elegant: {
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.4,
     shadowRadius: 20,
     elevation: 10,
+  },
+  card: {
+    shadowColor: '#FF7A00',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 6,
   },
 };
 
