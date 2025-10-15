@@ -111,7 +111,7 @@ export const FeedScreen: React.FC<FeedScreenProps> = ({
           </View>
           <View style={styles.avatar}>
             <LinearGradient
-              colors={['#63c4c0', '#63c4c080']}
+              colors={['#FF7A00', '#FF7A0080']}
               style={styles.avatarGradient}
             >
               <Text style={styles.avatarText}>MI</Text>
@@ -161,13 +161,13 @@ export const FeedScreen: React.FC<FeedScreenProps> = ({
                 onPress={prevEvent}
                 style={styles.navArrowLeft}
               >
-                <Ionicons name="chevron-back" size={20} color="#ffffff" />
+                <Ionicons name="chevron-back" size={20} color="#2B2B2B" />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={nextEvent}
                 style={styles.navArrowRight}
               >
-                <Ionicons name="chevron-forward" size={20} color="#ffffff" />
+                <Ionicons name="chevron-forward" size={20} color="#2B2B2B" />
               </TouchableOpacity>
             </TouchableOpacity>
 
@@ -202,7 +202,7 @@ export const FeedScreen: React.FC<FeedScreenProps> = ({
                 <View style={styles.eventUserInfo}>
                   <View style={styles.eventAvatar}>
                     <LinearGradient
-                      colors={['#63c4c0', '#63c4c080']}
+                      colors={['#FF7A00', '#FF7A0080']}
                       style={styles.eventAvatarGradient}
                     >
                       <Text style={styles.eventAvatarText}>
@@ -263,69 +263,7 @@ export const FeedScreen: React.FC<FeedScreenProps> = ({
         </View>
       </ScrollView>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <View style={styles.navContent}>
-          <NavButton
-            icon="home"
-            label="Home"
-            active={activeNav === "home"}
-            onPress={() => handleNavPress("home")}
-          />
-          <NavButton
-            icon="newspaper"
-            label="Feed"
-            active={activeNav === "feed"}
-            onPress={() => handleNavPress("feed")}
-          />
-          
-          {/* Scan Button - Center Elevated */}
-          <LinearGradient
-            colors={gradients.primary}
-            style={styles.scanButton}
-          >
-            <TouchableOpacity style={styles.scanButtonInner}>
-              <Ionicons name="scan" size={28} color="#ffffff" />
-            </TouchableOpacity>
-          </LinearGradient>
-          
-          <NavButton
-            icon="chatbubble"
-            label="Message"
-            active={activeNav === "message"}
-            onPress={() => handleNavPress("message")}
-          />
-          <NavButton
-            icon="person"
-            label="Profile"
-            active={activeNav === "profile"}
-            onPress={() => handleNavPress("profile")}
-          />
-        </View>
-      </View>
     </LinearGradient>
-  );
-};
-
-interface NavButtonProps {
-  icon: string;
-  label: string;
-  active: boolean;
-  onPress: () => void;
-}
-
-const NavButton: React.FC<NavButtonProps> = ({ icon, label, active, onPress }) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.navButton}>
-      <Ionicons 
-        name={icon as any} 
-        size={20} 
-        color={active ? '#63c4c0' : '#9ca3af'} 
-      />
-      <Text style={[styles.navButtonText, active && styles.navButtonTextActive]}>
-        {label}
-      </Text>
-    </TouchableOpacity>
   );
 };
 
@@ -352,7 +290,7 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
   },
   avatar: {
     width: 48,
@@ -382,7 +320,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
     marginBottom: 16,
   },
   topEventContainer: {
@@ -423,7 +361,7 @@ const styles = StyleSheet.create({
   topEventTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
     marginBottom: 4,
   },
   topEventLocation: {
@@ -486,7 +424,7 @@ const styles = StyleSheet.create({
   },
   paginationDotActive: {
     width: 32,
-    backgroundColor: '#63c4c0',
+    backgroundColor: '#FF7A00',
   },
   allEventsSection: {
     paddingHorizontal: 24,
@@ -495,11 +433,16 @@ const styles = StyleSheet.create({
     gap: 24,
   },
   eventCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 24,
     padding: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderWidth: 2,
+    borderColor: '#FF7A00',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
   },
   eventUserInfo: {
     flexDirection: 'row',
@@ -537,13 +480,13 @@ const styles = StyleSheet.create({
   eventUserName: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#ffffff',
+    color: '#2B2B2B',
   },
   verifiedBadge: {
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: '#63c4c0',
+    backgroundColor: '#FF7A00',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -577,12 +520,12 @@ const styles = StyleSheet.create({
   eventTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
     marginBottom: 4,
   },
   eventDate: {
     fontSize: 14,
-    color: '#63c4c0',
+    color: '#FF7A00',
     fontWeight: '600',
   },
   eventDescription: {
@@ -591,7 +534,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   verMaisButton: {
-    backgroundColor: '#63c4c0',
+    backgroundColor: '#FF7A00',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 12,
@@ -601,55 +544,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#1a1a1a',
-  },
-  bottomNav: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(71, 71, 71, 0.95)',
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.1)',
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 28,
-  },
-  navContent: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    position: 'relative',
-  },
-  scanButton: {
-    width: 64,
-    height: 64,
-    borderRadius: 16,
-    marginTop: -32,
-    marginBottom: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
-  },
-  scanButtonInner: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  navButton: {
-    alignItems: 'center',
-    gap: 4,
-    paddingVertical: 8,
-    flex: 1,
-    maxWidth: 80,
-  },
-  navButtonText: {
-    fontSize: 12,
-    color: '#9ca3af',
-  },
-  navButtonTextActive: {
-    color: '#63c4c0',
   },
 });

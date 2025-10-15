@@ -99,7 +99,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
           </View>
           <View style={styles.avatar}>
             <LinearGradient
-              colors={['#63c4c0', '#63c4c080']}
+              colors={['#FF7A00', '#FF7A0080']}
               style={styles.avatarGradient}
             >
               <Text style={styles.avatarText}>MI</Text>
@@ -121,7 +121,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
             }
           ]}>
             <LinearGradient
-              colors={['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.05)']}
+              colors={gradients.card}
               style={styles.cardGradient}
             >
                 {/* Flip Button */}
@@ -130,12 +130,12 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
                   style={styles.flipButton}
                   activeOpacity={0.7}
                 >
-                  <Ionicons name="refresh" size={24} color="#ffffff" />
+                  <Ionicons name="refresh" size={24} color="#6E6E6E" />
                 </TouchableOpacity>
                 
                 {/* Contactless Icon */}
                 <View style={styles.contactlessIcon}>
-                  <Ionicons name="wifi" size={32} color="#63c4c0" />
+                  <Ionicons name="wifi" size={32} color="#FF7A00" />
                 </View>
 
                 {/* Card Content */}
@@ -192,22 +192,22 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
                 opacity: backOpacity,
               }
             ]}>
-              <LinearGradient
-                colors={['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.05)']}
-                style={styles.cardGradient}
-              >
+            <LinearGradient
+              colors={gradients.card}
+              style={styles.cardGradient}
+            >
                 {/* Flip Back Button */}
                 <TouchableOpacity
                   onPress={() => handleFlipCard(true)}
                   style={styles.flipButton}
                   activeOpacity={0.7}
                 >
-                  <Ionicons name="refresh" size={24} color="#ffffff" />
+                  <Ionicons name="refresh" size={24} color="#6E6E6E" />
                 </TouchableOpacity>
 
                 {/* Contactless Icon */}
                 <View style={styles.contactlessIcon}>
-                  <Ionicons name="wifi" size={32} color="#63c4c0" />
+                  <Ionicons name="wifi" size={32} color="#FF7A00" />
                 </View>
 
                 {/* QR Code */}
@@ -273,69 +273,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
         </View>
       </ScrollView>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <View style={styles.navContent}>
-          <NavButton
-            icon="home"
-            label="Home"
-            active={activeNav === "home"}
-            onPress={() => handleNavPress("home")}
-          />
-          <NavButton
-            icon="newspaper"
-            label="Feed"
-            active={activeNav === "feed"}
-            onPress={() => handleNavPress("feed")}
-          />
-          
-          {/* Scan Button - Center Elevated */}
-          <LinearGradient
-            colors={gradients.primary}
-            style={styles.scanButton}
-          >
-            <TouchableOpacity style={styles.scanButtonInner}>
-              <Ionicons name="scan" size={28} color="#ffffff" />
-            </TouchableOpacity>
-          </LinearGradient>
-          
-          <NavButton
-            icon="chatbubble"
-            label="Message"
-            active={activeNav === "message"}
-            onPress={() => handleNavPress("message")}
-          />
-          <NavButton
-            icon="person"
-            label="Profile"
-            active={activeNav === "profile"}
-            onPress={() => handleNavPress("profile")}
-          />
-        </View>
-      </View>
     </LinearGradient>
-  );
-};
-
-interface NavButtonProps {
-  icon: string;
-  label: string;
-  active: boolean;
-  onPress: () => void;
-}
-
-const NavButton: React.FC<NavButtonProps> = ({ icon, label, active, onPress }) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.navButton}>
-      <Ionicons 
-        name={icon as any} 
-        size={20} 
-        color={active ? '#60a5fa' : '#9ca3af'} 
-      />
-      <Text style={[styles.navButtonText, active && styles.navButtonTextActive]}>
-        {label}
-      </Text>
-    </TouchableOpacity>
   );
 };
 
@@ -356,13 +294,13 @@ const styles = StyleSheet.create({
   },
   greeting: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 4,
   },
   userName: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
   },
   avatar: {
     width: 48,
@@ -398,6 +336,11 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     position: 'absolute',
     backfaceVisibility: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 8,
   },
   cardFront: {
     // Front card styles
@@ -409,8 +352,8 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 24,
     padding: 24,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderWidth: 2,
+    borderColor: '#FF7A00',
   },
   flipButton: {
     position: 'absolute',
@@ -444,7 +387,7 @@ const styles = StyleSheet.create({
   },
   cardLabel: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 8,
   },
   cardNumberContainer: {
@@ -456,7 +399,7 @@ const styles = StyleSheet.create({
   cardNumber: {
     fontSize: 18,
     fontFamily: 'monospace',
-    color: '#ffffff',
+    color: '#2B2B2B',
     letterSpacing: 1,
   },
   copyButton: {
@@ -470,7 +413,7 @@ const styles = StyleSheet.create({
   },
   balanceLabel: {
     fontSize: 12,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 4,
   },
   balanceRow: {
@@ -481,7 +424,7 @@ const styles = StyleSheet.create({
   balanceAmount: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
   },
   eyeButton: {
     padding: 8,
@@ -492,7 +435,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   detailButtonText: {
-    color: '#63c4c0',
+    color: '#FF7A00',
     fontSize: 14,
     fontWeight: '500',
   },
@@ -522,13 +465,13 @@ const styles = StyleSheet.create({
   },
   qrLabel: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 4,
   },
   qrNumber: {
     fontSize: 12,
     fontFamily: 'monospace',
-    color: '#9ca3af',
+    color: '#6E6E6E',
   },
   cardDetails: {
     position: 'absolute',
@@ -541,13 +484,13 @@ const styles = StyleSheet.create({
   },
   cardDetailLabel: {
     fontSize: 12,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 4,
   },
   cardDetailValue: {
     fontSize: 12,
     fontFamily: 'monospace',
-    color: '#9ca3af',
+    color: '#6E6E6E',
   },
   cvvContainer: {
     alignItems: 'flex-end',
@@ -575,7 +518,7 @@ const styles = StyleSheet.create({
   transactionsTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#2B2B2B',
   },
   historyButton: {
     flexDirection: 'row',
@@ -587,11 +530,11 @@ const styles = StyleSheet.create({
   },
   historyButtonText: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
   },
   todayLabel: {
     fontSize: 16,
-    color: '#9ca3af',
+    color: '#6E6E6E',
     marginBottom: 16,
   },
   transactionsList: {
@@ -627,12 +570,12 @@ const styles = StyleSheet.create({
   transactionName: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#ffffff',
+    color: '#2B2B2B',
     marginBottom: 4,
   },
   transactionSubtitle: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6E6E6E',
   },
   transactionAmount: {
     fontSize: 16,
@@ -642,56 +585,6 @@ const styles = StyleSheet.create({
     color: '#ef4444',
   },
   transactionAmountPositive: {
-    color: '#63c4c0',
-  },
-  bottomNav: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(71, 71, 71, 0.95)',
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255, 255, 255, 0.1)',
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 28,
-  },
-  navContent: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    position: 'relative',
-  },
-  scanButton: {
-    width: 64,
-    height: 64,
-    borderRadius: 16,
-    marginTop: -32,
-    marginBottom: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 8,
-  },
-  scanButtonInner: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  navButton: {
-    alignItems: 'center',
-    gap: 4,
-    paddingVertical: 8,
-    flex: 1,
-    maxWidth: 80,
-  },
-  navButtonText: {
-    fontSize: 12,
-    color: '#9ca3af',
-  },
-  navButtonTextActive: {
-    color: '#63c4c0',
+    color: '#FF7A00',
   },
 });
