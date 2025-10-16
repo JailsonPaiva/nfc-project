@@ -7,12 +7,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { OnboardingScreen } from '../screens/OnboardingScreen';
 import { LoginScreen } from '../screens/LoginScreen';
 import { RegisterScreen } from '../screens/RegisterScreen';
+import { AccountTypeScreen } from '../screens/AccountTypeScreen';
+import { CompleteProfileScreen } from '../screens/CompleteProfileScreen';
 import { DashboardScreen } from '../screens/DashboardScreen';
+import { BusinessDashboardScreen } from '../screens/BusinessDashboardScreen';
+import { BusinessEventsScreen } from '../screens/BusinessEventsScreen';
+import { BusinessReportsScreen } from '../screens/BusinessReportsScreen';
 import { FeedScreen } from '../screens/FeedScreen';
 import { MenuScreen } from '../screens/MenuScreen';
 import { NotificationsScreen } from '../screens/NotificationsScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
-import { RootStackParamList, UserCredentials, UserRegistration } from '../types';
+import { RootStackParamList, UserCredentials, UserRegistration, AccountType, CompleteProfileData } from '../types';
 import { Alert } from 'react-native';
 import { colors, gradients } from '../constants/colors';
 
@@ -45,9 +50,10 @@ const screenOptions = {
 interface StaticNavBarProps {
   activeScreen: string;
   onNavigate: (screen: string) => void;
+  accountType?: 'individual' | 'business';
 }
 
-const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate }) => {
+const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate, accountType }) => {
   return (
     <View style={styles.bottomNav}>
       <View style={styles.navContent}>
@@ -58,11 +64,11 @@ const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate })
           <Ionicons 
             name="home" 
             size={20} 
-            color={activeScreen === 'Dashboard' ? '#FF7A00' : '#A0A0A0'} 
+            color={(activeScreen === 'Dashboard' || activeScreen === 'BusinessDashboard') ? '#FF7A00' : '#A0A0A0'} 
           />
           <Text style={[
             styles.navButtonText,
-            activeScreen === 'Dashboard' && styles.navButtonTextActive
+            (activeScreen === 'Dashboard' || activeScreen === 'BusinessDashboard') && styles.navButtonTextActive
           ]}>
             Home
           </Text>
@@ -135,6 +141,7 @@ const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate })
 export const AppNavigator: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<string>('Onboarding');
   const [showNavBar, setShowNavBar] = useState(false);
+  const [userData, setUserData] = useState<{ name: string; email: string; accountType?: AccountType } | null>(null);
   const navigationRef = useRef<NavigationContainerRef<RootStackParamList>>(null);
 
   const handleSignIn = (credentials: UserCredentials, navigation: any) => {
@@ -155,16 +162,30 @@ export const AppNavigator: React.FC = () => {
   };
 
   const handleSignUp = (data: UserRegistration, navigation: any) => {
+    // Salvar dados do usuário e navegar para seleção de tipo
+    setUserData({ name: data.name, email: data.email });
+    navigation.navigate('AccountType');
+  };
+
+  const handleAccountTypeSelection = (accountType: AccountType, navigation: any) => {
+    // Atualizar dados do usuário com tipo de conta
+    setUserData(prev => prev ? { ...prev, accountType } : null);
+    navigation.navigate('CompleteProfile');
+  };
+
+  const handleProfileComplete = (profileData: CompleteProfileData, navigation: any) => {
     Alert.alert(
-      'Registro realizado com sucesso!',
-      `Bem-vindo, ${data.name}!`,
+      'Perfil completo!',
+      `Bem-vindo ao PassaTap, ${userData?.name}!`,
       [
         {
           text: 'OK',
           onPress: () => {
             setShowNavBar(true);
-            setCurrentScreen('Dashboard');
-            navigation.navigate('Dashboard');
+            // Navegar para dashboard baseado no tipo de conta
+            const dashboardScreen = profileData.accountType === 'business' ? 'BusinessDashboard' : 'Dashboard';
+            setCurrentScreen(dashboardScreen);
+            navigation.navigate(dashboardScreen);
           }
         }
       ]
@@ -172,8 +193,37 @@ export const AppNavigator: React.FC = () => {
   };
 
   const handleNavigate = (screen: string, navigation: any) => {
-    setCurrentScreen(screen);
-    navigation.navigate(screen);
+    // Mapear navegação baseada no tipo de conta
+    let targetScreen = screen;
+    let currentScreenName = screen;
+    
+    if (userData?.accountType === 'business') {
+      switch (screen) {
+        case 'Dashboard':
+          targetScreen = 'BusinessDashboard';
+          currentScreenName = 'BusinessDashboard';
+          break;
+        case 'Events':
+          targetScreen = 'BusinessEvents';
+          currentScreenName = 'BusinessEvents';
+          break;
+        case 'Reports':
+          targetScreen = 'BusinessReports';
+          currentScreenName = 'BusinessReports';
+          break;
+        case 'Feed':
+          // Para Business, Feed vai para BusinessDashboard (não existe Feed separado)
+          targetScreen = 'BusinessDashboard';
+          currentScreenName = 'BusinessDashboard';
+          break;
+        default:
+          targetScreen = screen;
+          currentScreenName = screen;
+      }
+    }
+    
+    setCurrentScreen(currentScreenName);
+    navigation.navigate(targetScreen as any);
   };
 
   return (
@@ -216,9 +266,48 @@ export const AppNavigator: React.FC = () => {
             )}
           </Stack.Screen>
           
+          <Stack.Screen name="AccountType">
+            {({ navigation }) => (
+              <AccountTypeScreen
+                onBack={() => navigation.goBack()}
+                onSelectType={(type) => handleAccountTypeSelection(type, navigation)}
+                userName={userData?.name || ''}
+              />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="CompleteProfile">
+            {({ navigation }) => (
+              <CompleteProfileScreen
+                onBack={() => navigation.goBack()}
+                onComplete={(data) => handleProfileComplete(data, navigation)}
+                accountType={userData?.accountType || 'individual'}
+                userName={userData?.name || ''}
+              />
+            )}
+          </Stack.Screen>
+          
           <Stack.Screen name="Dashboard">
             {({ navigation }) => (
               <DashboardScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="BusinessDashboard">
+            {({ navigation }) => (
+              <BusinessDashboardScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="BusinessEvents">
+            {({ navigation }) => (
+              <BusinessEventsScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="BusinessReports">
+            {({ navigation }) => (
+              <BusinessReportsScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
             )}
           </Stack.Screen>
           
@@ -251,10 +340,10 @@ export const AppNavigator: React.FC = () => {
         {showNavBar && (
           <StaticNavBar 
             activeScreen={currentScreen} 
+            accountType={userData?.accountType}
             onNavigate={(screen) => {
               if (navigationRef.current) {
-                setCurrentScreen(screen);
-                navigationRef.current.navigate(screen as any);
+                handleNavigate(screen, navigationRef.current);
               }
             }} 
           />
