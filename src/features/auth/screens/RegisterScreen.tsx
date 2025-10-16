@@ -8,11 +8,11 @@ import {
   Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Button } from '../components/Button';
-import { Input } from '../components/Input';
+import { Button } from '../../../components/ui/Button';
+import { Input } from '../../../components/forms/Input';
 import { Ionicons } from '@expo/vector-icons';
-import { UserRegistration } from '../types';
-import { colors, gradients, shadows, spacing, borderRadius, typography } from '../constants/colors';
+import { UserRegistration } from '../../../types';
+import { colors, gradients, shadows, spacing, borderRadius, typography } from '../../../config/colors';
 
 interface RegisterScreenProps {
   onBack: () => void;
