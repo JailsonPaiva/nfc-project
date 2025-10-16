@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { colors, gradients, shadows, spacing, borderRadius, typography } from '../constants/colors';
+import {colors, gradients, shadows, spacing, borderRadius, typography} from '../../config/colors';
 
 interface ButtonProps {
   title: string;
@@ -172,3 +172,5 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
 });
+
+export default Button;

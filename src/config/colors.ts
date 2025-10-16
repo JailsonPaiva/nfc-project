@@ -198,3 +198,5 @@ export const commonStyles = {
     color: colors.foreground,
   },
 };
+
+export default colors;

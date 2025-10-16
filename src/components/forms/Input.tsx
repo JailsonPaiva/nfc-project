@@ -8,7 +8,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
-import { colors, spacing, borderRadius, typography } from '../constants/colors';
+import { colors, spacing, borderRadius, typography } from '../../config/colors';
 
 interface InputProps {
   label?: string;
@@ -170,3 +170,5 @@ const styles = StyleSheet.create({
     marginLeft: spacing.xs,
   },
 });
+
+export default Input;

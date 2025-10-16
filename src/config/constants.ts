@@ -42,3 +42,9 @@ export const FEATURE_FLAGS = {
   ENABLE_PUSH_NOTIFICATIONS: true,
   ENABLE_ANALYTICS: true,
 };
+
+export default {
+  API_CONFIG,
+  APP_CONFIG,
+  VALIDATION_RULES,
+};

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, gradients, shadows, spacing, borderRadius, typography } from '../constants/colors';
+import { colors, gradients, shadows, spacing, borderRadius, typography } from '../../../config/colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -500,3 +500,5 @@ const styles = StyleSheet.create({
     height: 100,
   },
 });
+
+export default BusinessReportsScreen;

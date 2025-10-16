@@ -418,3 +418,5 @@ const styles = StyleSheet.create({
     opacity: 0.1,
   },
 });
+
+export default AccountTypeScreen;

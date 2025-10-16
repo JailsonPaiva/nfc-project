@@ -464,3 +464,5 @@ const styles = StyleSheet.create({
     right: -16,
   },
 });
+
+export default LoginScreen;
