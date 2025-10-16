@@ -103,7 +103,12 @@ export const CompleteProfileScreen: React.FC<CompleteProfileScreenProps> = ({
         </TouchableOpacity>
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView 
+        style={styles.content} 
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="interactive"
+      >
         {/* Title */}
         <View style={styles.titleContainer}>
           <Text style={styles.welcomeText}>Quase lá, {userName}! 🎉</Text>
@@ -182,7 +187,7 @@ export const CompleteProfileScreen: React.FC<CompleteProfileScreenProps> = ({
                   placeholder="Website (opcional)"
                   value={formData.website || ''}
                   onChangeText={(value) => updateFormData('website', value)}
-                  keyboardType="url"
+                  keyboardType="default"
                   leftIcon="globe"
                 />
               </View>

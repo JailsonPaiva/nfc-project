@@ -68,7 +68,7 @@ export const Button: React.FC<ButtonProps> = ({
         style={style}
       >
         <LinearGradient
-          colors={gradients.primary}
+          colors={gradients.primary as [string, string]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={[styles.button, styles[`${size}Button`], disabled && styles.disabledButton]}
@@ -112,12 +112,12 @@ const styles = StyleSheet.create({
   },
   
   secondaryButton: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.backgroundSecondary,
     borderWidth: 1,
     borderColor: colors.border,
   },
   secondaryText: {
-    color: colors.secondaryForeground,
+    color: colors.textPrimary,
   },
   
   outlineButton: {

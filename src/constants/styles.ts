@@ -37,7 +37,7 @@ export const globalStyles = StyleSheet.create({
   },
   
   buttonSecondary: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.backgroundSecondary,
     borderRadius: borderRadius.full,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
@@ -64,7 +64,7 @@ export const globalStyles = StyleSheet.create({
   },
   
   textSecondary: {
-    color: colors.secondaryForeground,
+    color: colors.textSecondary,
     fontSize: typography.fontSize.base,
     fontWeight: typography.fontWeight.normal,
   },

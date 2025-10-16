@@ -34,13 +34,13 @@ const screenOptions = {
   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   transitionSpec: {
     open: {
-      animation: 'timing',
+      animation: 'timing' as const,
       config: {
         duration: 300,
       },
     },
     close: {
-      animation: 'timing',
+      animation: 'timing' as const,
       config: {
         duration: 300,
       },
@@ -94,7 +94,7 @@ const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate, a
         </TouchableOpacity>
 
         <LinearGradient
-          colors={gradients.primary}
+          colors={gradients.primary as [string, string]}
           style={styles.scanButton}
         >
           <TouchableOpacity style={styles.scanButtonInner}>

@@ -49,7 +49,6 @@ export const Input: React.FC<InputProps> = ({
 
   const containerStyle = [
     styles.container,
-    isFocused && styles.focusedContainer,
     error && styles.errorContainer,
     style,
   ];
@@ -82,10 +81,10 @@ export const Input: React.FC<InputProps> = ({
           secureTextEntry={secureTextEntry}
           keyboardType={keyboardType}
           autoCapitalize={autoCapitalize}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
           multiline={multiline}
           numberOfLines={numberOfLines}
+          editable={true}
+          autoCorrect={false}
         />
         
         {rightIcon && (
@@ -130,11 +129,11 @@ const styles = StyleSheet.create({
     shadowColor: '#FF7A00',
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 2,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 2,
   },
   errorContainer: {
     borderColor: colors.destructive,
@@ -144,6 +143,7 @@ const styles = StyleSheet.create({
     fontSize: typography.fontSize.base,
     color: '#2B2B2B',
     paddingVertical: spacing.md,
+    backgroundColor: 'transparent',
   },
   inputWithLeftIcon: {
     paddingLeft: spacing.sm,

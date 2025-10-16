@@ -69,7 +69,7 @@ export const AccountTypeScreen: React.FC<AccountTypeScreenProps> = ({
             activeOpacity={0.8}
           >
             <LinearGradient
-              colors={selectedType === 'individual' ? gradients.primary : ['#FFFFFF', '#F4F4F4']}
+              colors={selectedType === 'individual' ? gradients.primary as [string, string] : ['#FFFFFF', '#F4F4F4'] as [string, string]}
               style={styles.optionGradient}
             >
               <View style={styles.optionIcon}>
@@ -145,7 +145,7 @@ export const AccountTypeScreen: React.FC<AccountTypeScreenProps> = ({
             activeOpacity={0.8}
           >
             <LinearGradient
-              colors={selectedType === 'business' ? gradients.primary : ['#FFFFFF', '#F4F4F4']}
+              colors={selectedType === 'business' ? gradients.primary as [string, string] : ['#FFFFFF', '#F4F4F4'] as [string, string]}
               style={styles.optionGradient}
             >
               <View style={styles.optionIcon}>
@@ -223,7 +223,7 @@ export const AccountTypeScreen: React.FC<AccountTypeScreenProps> = ({
             activeOpacity={0.8}
           >
             <LinearGradient
-              colors={selectedType ? gradients.primary : ['#E0E0E0', '#E0E0E0']}
+              colors={selectedType ? gradients.primary as [string, string] : ['#E0E0E0', '#E0E0E0'] as [string, string]}
               style={styles.continueGradient}
             >
               <Text style={[

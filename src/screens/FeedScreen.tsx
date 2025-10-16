@@ -99,7 +99,7 @@ export const FeedScreen: React.FC<FeedScreenProps> = ({
 
   return (
     <LinearGradient
-      colors={gradients.background}
+      colors={gradients.background as [string, string]}
       style={styles.container}
     >
       {/* Header */}

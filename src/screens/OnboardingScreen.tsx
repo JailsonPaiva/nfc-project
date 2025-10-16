@@ -133,7 +133,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
 
   return (
     <LinearGradient
-      colors={gradients.background}
+      colors={gradients.background as [string, string]}
       style={styles.container}
     >
       <View style={styles.mainContainer}>
@@ -148,7 +148,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             ]}
           >
             <LinearGradient
-              colors={gradients.accent}
+              colors={gradients.accent as [string, string]}
               style={styles.cardGradient}
             >
               <Ionicons name="wifi" size={32} color="#FFFFFF" style={styles.cardIcon} />
@@ -164,7 +164,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             ]}
           >
             <LinearGradient
-              colors={gradients.cardDark}
+              colors={gradients.cardDark as [string, string]}
               style={styles.cardGradient}
             >
               <Ionicons name="wifi" size={32} color="#FF7A00" style={styles.cardIcon} />
@@ -180,7 +180,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
             ]}
           >
             <LinearGradient
-              colors={gradients.primary}
+              colors={gradients.primary as [string, string]}
               style={styles.frontCardGradient}
             >
               <Ionicons name="wifi" size={32} color="#FFFFFF" style={styles.cardIcon} />

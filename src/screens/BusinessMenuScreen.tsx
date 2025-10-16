@@ -102,7 +102,7 @@ export const BusinessMenuScreen: React.FC<BusinessMenuScreenProps> = ({
       !item.available && styles.menuItemUnavailable
     ]}>
       <View style={styles.menuItemContent}>
-        <View style={styles.menuItemInfo}>
+        <View>
           <View style={styles.menuItemHeader}>
             <Text style={[
               styles.menuItemName,

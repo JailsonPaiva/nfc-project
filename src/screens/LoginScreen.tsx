@@ -52,7 +52,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
 
   return (
     <LinearGradient
-      colors={gradients.background}
+      colors={gradients.background as [string, string]}
       style={styles.container}
     >
       <ScrollView
@@ -66,63 +66,63 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
         </TouchableOpacity>
 
         {/* Mini Cards Decorativos - com efeito de profundidade */}
-        <View style={styles.miniCard1}>
+        <View style={styles.miniCard1} pointerEvents="none">
           <LinearGradient
-            colors={gradients.accent}
+            colors={gradients.accent as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="wifi" size={16} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard2}>
+        <View style={styles.miniCard2} pointerEvents="none">
           <LinearGradient
-            colors={gradients.primary}
+            colors={gradients.primary as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="card-outline" size={16} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard3}>
+        <View style={styles.miniCard3} pointerEvents="none">
           <LinearGradient
-            colors={gradients.cardDark}
+            colors={gradients.cardDark as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="flash" size={16} color="#FF7A00" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard4}>
+        <View style={styles.miniCard4} pointerEvents="none">
           <LinearGradient
-            colors={gradients.accent}
+            colors={gradients.accent as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="swap-horizontal" size={16} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard5}>
+        <View style={styles.miniCard5} pointerEvents="none">
           <LinearGradient
-            colors={gradients.primary}
+            colors={gradients.primary as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="finger-print" size={14} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard6}>
+        <View style={styles.miniCard6} pointerEvents="none">
           <LinearGradient
-            colors={gradients.cardDark}
+            colors={gradients.cardDark as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="shield-checkmark" size={14} color="#FF7A00" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard7}>
+        <View style={styles.miniCard7} pointerEvents="none">
           <LinearGradient
-            colors={gradients.accent}
+            colors={gradients.accent as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="wallet" size={12} color="#FFFFFF" />
@@ -210,8 +210,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
       </ScrollView>
 
       {/* Background decorative elements */}
-      <View style={[styles.decorativeElement, styles.topLeft]} />
-      <View style={[styles.decorativeElement, styles.bottomRight]} />
+      <View style={[styles.decorativeElement, styles.topLeft]} pointerEvents="none" />
+      <View style={[styles.decorativeElement, styles.bottomRight]} pointerEvents="none" />
     </LinearGradient>
   );
 };

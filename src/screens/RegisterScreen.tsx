@@ -64,7 +64,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
 
   return (
     <LinearGradient
-      colors={gradients.background}
+      colors={gradients.background as [string, string]}
       style={styles.container}
     >
       <ScrollView
@@ -78,72 +78,72 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
         </TouchableOpacity>
 
         {/* Mini Cards Decorativos */}
-        <View style={styles.miniCard1}>
+        <View style={styles.miniCard1} pointerEvents="none">
           <LinearGradient
-            colors={gradients.primary}
+            colors={gradients.primary as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="card" size={18} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard2}>
+        <View style={styles.miniCard2} pointerEvents="none">
           <LinearGradient
-            colors={gradients.accent}
+            colors={gradients.accent as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="finger-print" size={18} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard3}>
+        <View style={styles.miniCard3} pointerEvents="none">
           <LinearGradient
-            colors={gradients.cardDark}
+            colors={gradients.cardDark as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="shield-checkmark" size={18} color="#FF7A00" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard4}>
+        <View style={styles.miniCard4} pointerEvents="none">
           <LinearGradient
-            colors={gradients.primary}
+            colors={gradients.primary as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="wallet" size={16} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard5}>
+        <View style={styles.miniCard5} pointerEvents="none">
           <LinearGradient
-            colors={gradients.accent}
+            colors={gradients.accent as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="sync" size={16} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard6}>
+        <View style={styles.miniCard6} pointerEvents="none">
           <LinearGradient
-            colors={gradients.cardDark}
+            colors={gradients.cardDark as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="lock-closed" size={14} color="#FF7A00" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard7}>
+        <View style={styles.miniCard7} pointerEvents="none">
           <LinearGradient
-            colors={gradients.primary}
+            colors={gradients.primary as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="qr-code" size={14} color="#FFFFFF" />
           </LinearGradient>
         </View>
         
-        <View style={styles.miniCard8}>
+        <View style={styles.miniCard8} pointerEvents="none">
           <LinearGradient
-            colors={gradients.accent}
+            colors={gradients.accent as [string, string]}
             style={styles.miniCardGradient}
           >
             <Ionicons name="analytics" size={12} color="#FFFFFF" />
