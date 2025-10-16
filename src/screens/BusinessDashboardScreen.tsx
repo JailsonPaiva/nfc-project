@@ -179,9 +179,9 @@ export const BusinessDashboardScreen: React.FC<BusinessDashboardScreenProps> = (
           ))}
         </View>
 
-        {/* Recent Transactions */}
+        {/* Event Activity */}
         <View style={styles.transactionsContainer}>
-          <Text style={styles.sectionTitle}>Transações Recentes</Text>
+          <Text style={styles.sectionTitle}>Atividade do Evento</Text>
           
           {mockRecentTransactions.map((transaction) => (
             <View key={transaction.id} style={styles.transactionCard}>
@@ -199,6 +199,9 @@ export const BusinessDashboardScreen: React.FC<BusinessDashboardScreenProps> = (
             </View>
           ))}
         </View>
+        
+        {/* Bottom spacing para não sobrepor com navegação */}
+        <View style={styles.bottomSpacing} />
       </ScrollView>
     </LinearGradient>
   );
@@ -219,12 +222,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   greeting: {
-    fontSize: 16,
+    fontSize: height < 700 ? 14 : 16,
     color: '#6E6E6E',
     marginBottom: 4,
   },
   userName: {
-    fontSize: 24,
+    fontSize: height < 700 ? 20 : 24,
     fontWeight: '800',
     color: '#2B2B2B',
   },
@@ -252,76 +255,77 @@ const styles = StyleSheet.create({
   },
   statsContainer: {
     flexDirection: 'row',
-    gap: 12,
-    marginBottom: 30,
+    gap: height < 700 ? 8 : 12,
+    marginBottom: height < 700 ? 20 : 30,
   },
   statCard: {
     flex: 1,
-    borderRadius: 16,
+    borderRadius: height < 700 ? 12 : 16,
     overflow: 'hidden',
     ...shadows.card,
   },
   statGradient: {
-    padding: 16,
+    padding: height < 700 ? 12 : 16,
     alignItems: 'center',
   },
   statValue: {
-    fontSize: 18,
+    fontSize: height < 700 ? 16 : 18,
     fontWeight: '800',
     color: '#FFFFFF',
-    marginTop: 8,
+    marginTop: height < 700 ? 6 : 8,
     marginBottom: 4,
   },
   statLabel: {
-    fontSize: 12,
+    fontSize: height < 700 ? 10 : 12,
     color: 'rgba(255, 255, 255, 0.9)',
     fontWeight: '500',
+    textAlign: 'center',
   },
   quickActions: {
-    marginBottom: 30,
+    marginBottom: height < 700 ? 20 : 30,
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: height < 700 ? 18 : 20,
     fontWeight: '700',
     color: '#2B2B2B',
-    marginBottom: 16,
+    marginBottom: height < 700 ? 12 : 16,
   },
   actionsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 12,
+    gap: height < 700 ? 8 : 12,
   },
   actionButton: {
     width: (width - 60) / 2,
-    borderRadius: 16,
+    borderRadius: height < 700 ? 12 : 16,
     overflow: 'hidden',
-    marginBottom: 12,
+    marginBottom: height < 700 ? 8 : 12,
   },
   actionGradient: {
-    padding: 20,
+    padding: height < 700 ? 16 : 20,
     alignItems: 'center',
   },
   actionSecondary: {
     backgroundColor: '#FFFFFF',
-    padding: 20,
+    padding: height < 700 ? 16 : 20,
     alignItems: 'center',
-    borderRadius: 16,
+    borderRadius: height < 700 ? 12 : 16,
     borderWidth: 2,
     borderColor: '#FF7A00',
     ...shadows.card,
   },
   actionText: {
-    fontSize: 14,
+    fontSize: height < 700 ? 12 : 14,
     fontWeight: '600',
     color: '#FFFFFF',
-    marginTop: 8,
+    marginTop: height < 700 ? 6 : 8,
     textAlign: 'center',
   },
   actionTextSecondary: {
-    fontSize: 14,
+    fontSize: height < 700 ? 12 : 14,
     fontWeight: '600',
     color: '#FF7A00',
-    marginTop: 8,
+    marginTop: height < 700 ? 6 : 8,
     textAlign: 'center',
   },
   eventsContainer: {
@@ -420,5 +424,8 @@ const styles = StyleSheet.create({
   transactionTime: {
     fontSize: 12,
     color: '#6E6E6E',
+  },
+  bottomSpacing: {
+    height: 100,
   },
 });

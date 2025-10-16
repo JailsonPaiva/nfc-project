@@ -236,6 +236,9 @@ export const BusinessReportsScreen: React.FC<BusinessReportsScreenProps> = ({
             <Text style={styles.exportReportText}>Exportar Relatório</Text>
           </LinearGradient>
         </TouchableOpacity>
+        
+        {/* Bottom spacing para não sobrepor com navegação */}
+        <View style={styles.bottomSpacing} />
       </ScrollView>
     </LinearGradient>
   );
@@ -477,7 +480,7 @@ const styles = StyleSheet.create({
   exportReportButton: {
     borderRadius: 16,
     overflow: 'hidden',
-    marginBottom: 30,
+    marginBottom: 100, // Padding para não sobrepor com navegação
     ...shadows.glow,
   },
   exportReportGradient: {
@@ -492,5 +495,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#FFFFFF',
     marginLeft: 8,
+  },
+  bottomSpacing: {
+    height: 100,
   },
 });

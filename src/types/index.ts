@@ -8,6 +8,8 @@ export type RootStackParamList = {
   BusinessDashboard: undefined;
   BusinessEvents: undefined;
   BusinessReports: undefined;
+  BusinessMenu: undefined;
+  BusinessProfile: undefined;
   Feed: undefined;
   Menu: undefined;
   Notifications: undefined;

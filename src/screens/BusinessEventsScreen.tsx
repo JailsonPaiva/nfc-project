@@ -255,6 +255,9 @@ export const BusinessEventsScreen: React.FC<BusinessEventsScreenProps> = ({
             <Text style={styles.createEventText}>Criar Novo Evento</Text>
           </LinearGradient>
         </TouchableOpacity>
+        
+        {/* Bottom spacing para não sobrepor com navegação */}
+        <View style={styles.bottomSpacing} />
       </ScrollView>
     </LinearGradient>
   );
@@ -455,5 +458,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#FFFFFF',
     marginLeft: 8,
+  },
+  bottomSpacing: {
+    height: 100,
   },
 });

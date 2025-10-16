@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { OnboardingScreen } from '../screens/OnboardingScreen';
@@ -13,6 +13,8 @@ import { DashboardScreen } from '../screens/DashboardScreen';
 import { BusinessDashboardScreen } from '../screens/BusinessDashboardScreen';
 import { BusinessEventsScreen } from '../screens/BusinessEventsScreen';
 import { BusinessReportsScreen } from '../screens/BusinessReportsScreen';
+import { BusinessMenuScreen } from '../screens/BusinessMenuScreen';
+import { BusinessProfileScreen } from '../screens/BusinessProfileScreen';
 import { FeedScreen } from '../screens/FeedScreen';
 import { MenuScreen } from '../screens/MenuScreen';
 import { NotificationsScreen } from '../screens/NotificationsScreen';
@@ -117,22 +119,22 @@ const StaticNavBar: React.FC<StaticNavBarProps> = ({ activeScreen, onNavigate, a
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => onNavigate('Profile')}
-          style={styles.navButton}
-        >
-          <Ionicons 
-            name="person" 
-            size={20} 
-            color={activeScreen === 'Profile' ? '#FF7A00' : '#A0A0A0'}
-          />
-          <Text style={[
-            styles.navButtonText,
-            activeScreen === 'Profile' && styles.navButtonTextActive
-          ]}>
-            Profile
-          </Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => onNavigate('Profile')}
+              style={styles.navButton}
+            >
+              <Ionicons 
+                name="person" 
+                size={20} 
+                color={(activeScreen === 'Profile' || activeScreen === 'BusinessProfile') ? '#FF7A00' : '#A0A0A0'}
+              />
+              <Text style={[
+                styles.navButtonText,
+                (activeScreen === 'Profile' || activeScreen === 'BusinessProfile') && styles.navButtonTextActive
+              ]}>
+                Profile
+              </Text>
+            </TouchableOpacity>
       </View>
     </View>
   );
@@ -210,6 +212,14 @@ export const AppNavigator: React.FC = () => {
         case 'Reports':
           targetScreen = 'BusinessReports';
           currentScreenName = 'BusinessReports';
+          break;
+        case 'Menu':
+          targetScreen = 'BusinessMenu';
+          currentScreenName = 'BusinessMenu';
+          break;
+        case 'Profile':
+          targetScreen = 'BusinessProfile';
+          currentScreenName = 'BusinessProfile';
           break;
         case 'Feed':
           // Para Business, Feed vai para BusinessDashboard (não existe Feed separado)
@@ -311,6 +321,18 @@ export const AppNavigator: React.FC = () => {
             )}
           </Stack.Screen>
           
+          <Stack.Screen name="BusinessMenu">
+            {({ navigation }) => (
+              <BusinessMenuScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
+          <Stack.Screen name="BusinessProfile">
+            {({ navigation }) => (
+              <BusinessProfileScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
+            )}
+          </Stack.Screen>
+          
           <Stack.Screen name="Feed">
             {({ navigation }) => (
               <FeedScreen onNavigate={(screen) => handleNavigate(screen, navigation)} />
@@ -362,9 +384,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.98)',
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 122, 0, 0.2)',
-    paddingHorizontal: 20,
-    paddingTop: 12,
-    paddingBottom: 28,
+    paddingHorizontal: Dimensions.get('window').width < 375 ? 16 : 20,
+    paddingTop: Dimensions.get('window').height < 700 ? 8 : 12,
+    paddingBottom: Dimensions.get('window').height < 700 ? 20 : 28,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1,
@@ -378,11 +400,11 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   scanButton: {
-    width: 64,
-    height: 64,
-    borderRadius: 16,
-    marginTop: -32,
-    marginBottom: 8,
+    width: Dimensions.get('window').height < 700 ? 56 : 64,
+    height: Dimensions.get('window').height < 700 ? 56 : 64,
+    borderRadius: Dimensions.get('window').height < 700 ? 14 : 16,
+    marginTop: Dimensions.get('window').height < 700 ? -28 : -32,
+    marginBottom: Dimensions.get('window').height < 700 ? 6 : 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -397,13 +419,13 @@ const styles = StyleSheet.create({
   },
   navButton: {
     alignItems: 'center',
-    gap: 4,
-    paddingVertical: 8,
+    gap: Dimensions.get('window').height < 700 ? 2 : 4,
+    paddingVertical: Dimensions.get('window').height < 700 ? 6 : 8,
     flex: 1,
-    maxWidth: 80,
+    maxWidth: Dimensions.get('window').width < 375 ? 70 : 80,
   },
   navButtonText: {
-    fontSize: 12,
+    fontSize: Dimensions.get('window').height < 700 ? 10 : 12,
     color: '#A0A0A0',
   },
   navButtonTextActive: {
