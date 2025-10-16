@@ -1,4 +1,6 @@
 // Tipos relacionados à autenticação
+import { BaseEntity } from './common';
+
 export type AccountType = 'individual' | 'business';
 
 export interface UserCredentials {
@@ -53,5 +55,3 @@ export interface AuthState {
   isLoading: boolean;
   error: string | null;
 }
-
-import { BaseEntity } from './common';
