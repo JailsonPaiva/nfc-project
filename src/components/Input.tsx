@@ -56,11 +56,11 @@ export const Input: React.FC<InputProps> = ({
 
   const textInputStyle = [
     styles.input,
-    leftIcon && styles.inputWithLeftIcon,
-    rightIcon && styles.inputWithRightIcon,
-    multiline && styles.multilineInput,
+    leftIcon ? styles.inputWithLeftIcon : null,
+    rightIcon ? styles.inputWithRightIcon : null,
+    multiline ? styles.multilineInput : null,
     inputStyle,
-  ];
+  ].filter(Boolean);
 
   return (
     <View style={styles.wrapper}>
@@ -76,7 +76,7 @@ export const Input: React.FC<InputProps> = ({
         <TextInput
           style={textInputStyle}
           placeholder={placeholder}
-          placeholderTextColor={colors.mutedForeground}
+          placeholderTextColor="#6E6E6E"
           value={value}
           onChangeText={onChangeText}
           secureTextEntry={secureTextEntry}
@@ -117,16 +117,24 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.1)',
+    borderColor: '#FF7A00',
     borderRadius: borderRadius.xl,
     paddingHorizontal: spacing.md,
     minHeight: 56,
   },
   focusedContainer: {
-    borderColor: colors.ring,
+    borderColor: '#FF7A00',
     borderWidth: 2,
+    shadowColor: '#FF7A00',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
   },
   errorContainer: {
     borderColor: colors.destructive,
@@ -134,7 +142,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: typography.fontSize.base,
-    color: colors.foreground,
+    color: '#2B2B2B',
     paddingVertical: spacing.md,
   },
   inputWithLeftIcon: {
